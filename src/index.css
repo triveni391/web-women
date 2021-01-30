@@ -5,7 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  /* overflow-y: auto;
+  box-sizing: border-box;
+  position: fixed; */
+  background:white;
+
+  height: auto;
 }
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --desktop: "768px";
+  --mobile: "600px";
+  --backgroundImage: "linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);"
+}
+
+:root {
+    width: 100vw;
+    position: relative;
+    top: -18px;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
