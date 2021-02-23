@@ -18,7 +18,6 @@ const MyDescription = styled.div`
     font-size: 1em;
     color: white;
     font-weight: 600;
-    line-height: 1.5;
     letter-spacing: 1.6;
     & span {
       text-decoration: underline;
@@ -28,7 +27,6 @@ const MyDescription = styled.div`
 const HeaderStyle = styled.h1`
      color: white;
      font-size: 5rem;
-     line-height: 1.2px;
      text-transform: uppercase;
      text-shadow: 0 3px 3px rgba(0,0,0,.5);
      ${media.mobileOnly} {
@@ -38,7 +36,6 @@ const HeaderStyle = styled.h1`
 
 const SubHeader = styled.span`
      color: white;
-     line-height: 1.2px;
      font-size: 1.2em;
      text-shadow: 0 3px 3px rgba(0,0,0,.5);
      position: absolute;
@@ -60,7 +57,7 @@ const DescriptionContainer = styled.div`
 
 
 const Header = () => {
-  return <HeaderSection id="home">
+  return <HeaderSection>
     <HeaderContainer>
       <HeaderStyle>Web-Women</HeaderStyle>
       <SubHeader>Freelance Web Developer</SubHeader>

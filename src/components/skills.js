@@ -1,10 +1,23 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { media } from "../constants/breakpoint";
 
+const Container = styled.section`
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+`
+
 const SkillsContainer = styled.section`
-    width: 90%;
+    width: 100%;
     margin: auto;
+    ${media.mobileOnly} {
+    transform: translateY(-13%);
+    height: 25rem;
+    }
 `
 
 const SkillsHeader = styled.h1`
@@ -13,32 +26,58 @@ const SkillsHeader = styled.h1`
     margin: 0.5rem 0;
 `
 const SkillsContent = styled.div`
-    width: 100%;
+    width: 100vw;
     display: flex;
     padding: 2rem;
+    justify-content: center;
 `
 
 const RangeContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.5rem;
+    height: 20%;
+    flex-flow: wrap;
     width: 100%;
+    ${media.smallMobleOnly} {
+        margin-bottom:0.5rem;
+    }
 `
+const moveRL = keyframes`
+    from {
+        overflow: hidden;
+    }
 
-const RangeTitle = styled.h4`
+    to {
+        overflow: visible;
+    }
+`
+const RangeTitle = styled.h5`
     text-align: left;
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1em;
+    text-shadow: 1px 1px #2187e7b3;
+    text-transform: uppercase;
+    ${media.mobileOnly} {
+        font-size: 16px;
+    }
 `
 
 const ProgressBarContainer = styled.div`
     width: 100%;
-    height: 20px;
-    background-color: rgba(0,0,0,.05);
+    height: 5px;
+    background-color: #353b48;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px #2187e7b3;
 `
 
 const ProgressBar = styled.div`
     width: ${props => props.width};
-    height: 100%;
+    height: 5px;
     transition: .5s;
-    background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
+    background: #2187e7;
+    animation: ${moveRL} 1s;
 `
 
 const SkillsBar = styled.div`
@@ -50,6 +89,34 @@ const SkillsBar = styled.div`
     }
 `
 
+const oddCircularMotion = keyframes`
+     0% {
+         transform: translate(5rem, 10rem)
+     }
+
+     50% {
+        transform: translate(10rem, -5rem)
+
+     }
+     100% {
+        transform: translate(5rem, -10rem)
+     }
+
+`
+
+const evenCircularMotion = keyframes`
+     0% {
+         transform: translate(5rem, -10rem)
+     }
+
+     50% {
+        transform: translate(-10rem, -5rem)
+
+     }
+     100% {
+        transform: translate(5rem, 10rem)
+     }
+`
 
 const SkillsDefinition = styled.div`
     width: 50%;
@@ -59,6 +126,51 @@ const SkillsDefinition = styled.div`
         display: none;
     }
 `
+const Content = styled.div`
+    display: none;
+        font-size: 1em;
+        color: black;
+        text-align: center;
+        vertical-align: middle;
+`
+
+const CircleComponent = styled.div`
+    width: 10rem;
+    margin: 0 2rem;
+    height: 10rem;
+    border-radius: 10rem;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 2s;
+    &:hover {
+        width: 30rem;
+        background: white;
+    }
+
+    &:hover ${Content} {
+        display: inline-block;
+    }
+
+    &:nth-child(odd) {
+        transform: translate(5rem, -20rem);
+
+    }
+
+    &:nth-child(even) {
+         transform: translate(5rem, 0rem);
+
+    }
+`
+const Header = styled.h5`
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    transition: 2s;
+`
+
 
 function Range(props) {
     return <RangeContainer>
@@ -74,24 +186,20 @@ const Skills = () => {
         title: "js", width: "80%"
     },
     {
-        title: "node js", width: " 80%"
-    },
-    {
-        title: "React js", width: " 80%"
+        title: "react js", width: " 80%"
     },
     {
         title: "html/css", width: " 80%"
     },
     {
+        title: "nodeJs", width: " 80%"
+    },
+    {
         title: "mongoDb", width: " 80%"
     }];
 
-    return <SkillsContainer id="skills">
-        <SkillsHeader>
-            What I Do
-        </SkillsHeader>
+    return <SkillsContainer>
         <SkillsContent>
-            <SkillsDefinition>image</SkillsDefinition>
             <SkillsBar>
                 {
                     skillSets.map(skill => <Range title={skill.title} width={skill.width} />)

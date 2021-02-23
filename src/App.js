@@ -6,6 +6,8 @@ import Header from "./components/header";
 import Skills from "./components/skills";
 import Services from "./components/services";
 import Contact from "./components/contact";
+import Slider from "./pages/portfolio1";
+import SocialIcons from "./components/socialIcons";
 
 const translate = keyframes`
     from {
@@ -36,25 +38,25 @@ background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
   }
   `
 
-const Toggle = styled.div`
-    display: none;
-    height: 20px;
-    width: 2rem;
-    margin: 1rem;
-    border-top: 2px solid ${props => props.background};
-    border-bottom: 2px solid ${props => props.background};
-    transistion: 1s;
-    cursor: pointer;
-    position: absolute;
-    top: 1rem;
-    before {
-      height: 50%;
-      border-top: 2px solid ${props => props.background};
-    }
-    ${media.mobileOnly}{
-    display: block;  
-  }
-`
+// const Toggle = styled.div`
+//     display: none;
+//     height: 20px;
+//     width: 2rem;
+//     margin: 1rem;
+//     border-top: 2px solid ${props => props.background};
+//     border-bottom: 2px solid ${props => props.background};
+//     transistion: 1s;
+//     cursor: pointer;
+//     position: absolute;
+//     top: 1rem;
+//     before {
+//       height: 50%;
+//       border-top: 2px solid ${props => props.background};
+//     }
+//     ${media.mobileOnly}{
+//     display: block;  
+//   }
+// `
 
 const MobileNavContainer = styled.ul`
     width: 100%;
@@ -83,10 +85,10 @@ const Wrapper = styled.section`
   `
 const NavigationWrapper = styled.section`
       width: 100%;
+      z-index: 100;
       position: fixed;
-      background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
       top: 0;
-      background-image: ;
+      color: rgba(255,255,255,0.05);
       height: 5rem;
   `
 
@@ -94,43 +96,67 @@ const NavigationContainer = styled.ul`
       display: flex;
       list-style: none;
       width: 100%;
-      height: 2rem;
+      height: 4rem;
       padding: 1rem 0;
       justify-content: space-around;
       ${media.mobileOnly} {
-        display: none;
+        background: ${props => props.isNav ? "white" : "inherit"};
+        width: ${props => props.isNav ? "100vw" : "100%"};
+        height: ${props => props.isNav ? "100vh" : "4rem"};
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        margin: 0;
+        font-size: 2em;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
       }
   `
 
-function App() {
-  const [showNav, setShowNav] = useState(false);
 
-  function toggleNav(params) {
-    setShowNav(!showNav);
-  }
-  return (
-    showNav ? <>
-      <Toggle onClick={toggleNav} background="black" />
-      <MobileNavContainer>
-        <NavItems onClick={toggleNav} />
-      </MobileNavContainer>
-    </> :
-      <Fragment>
-        <Wave />
-        <Wrapper>
-          <Toggle onClick={toggleNav} background="white" />
-          <NavigationWrapper >
-            <NavigationContainer>
-              <NavItems />
-            </NavigationContainer>
-          </NavigationWrapper>
-          <Header />
-          <Services />
-          <Skills />
-          <Contact />
-        </Wrapper>
-      </Fragment>
-  );
+
+function App() {
+  const [activePage, setActivePage] = useState(0);
+  const [nav, showNav] = useState(false);
+
+  // return (
+  //   showNav ? <>
+  //     <Toggle onClick={toggleNav} background="black" />
+  //     <MobileNavContainer>
+  //       <NavItems onClick={toggleNav} />
+  //     </MobileNavContainer>
+  //   </> :
+  //     <Fragment>
+  //       <Wave />
+  //       <Wrapper>
+  //         <Toggle onClick={toggleNav} background="white" />
+  //         <NavigationWrapper >
+  //           <NavigationContainer>
+  //             <NavItems />
+  //           </NavigationContainer>
+  //         </NavigationWrapper>
+  //         <Header />
+  //         <Services />
+  //         <Skills />
+  //         <Contact />
+  //       </Wrapper>
+  //     </Fragment>
+  // );
+
+
+  return <Fragment>
+    {/* <MobileNavContainer>
+      <NavItems onClick={(index => setActivePage(index))} />
+    </MobileNavContainer> */}
+    <NavigationWrapper>
+
+      <NavigationContainer isNav={nav}>
+        <NavItems onClick={(index => setActivePage(index))} active={activePage} nav={nav} showNav={() => showNav(!nav)} />
+      </NavigationContainer>
+    </NavigationWrapper>
+    <Slider selected={activePage} />
+  </Fragment>
 
 }
 

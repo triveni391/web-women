@@ -1,58 +1,58 @@
-import AwesomeSlider from "react-awesome-slider"
-import 'react-awesome-slider/dist/styles.css';
+import AwesomeSlider from 'react-awesome-slider';
+import AwesomeSliderStyles from "react-awesome-slider/dist/styles.css?raw";
+import { Fragment } from 'react';
+import Nav from "../components/navigation";
+import styled, { keyframes } from 'styled-components';
+import Night from '../components/night';
+import Services from '../components/services';
+import Skills from '../components/skills';
+import Contact from '../components/contact';
+import Header from '../components/header';
 
-import {
-    Provider,
-    Link,
-    withNavigationHandlers
-} from "react-awesome-slider/dist/navigation";
+const move = keyframes`
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(2);
+    }
+`
 
-// Wrapp the AwesomeSlider component with the navigationHandlers
-const NavigationSlider = withNavigationHandlers(AwesomeSlider);
+const opacity = keyframes`
+    0%,20%,40%,60%,80% {
+        opacity: 0;
+    }
 
-// Create an AwesomeSlider instance with some content
-const Slider = () => {
-    return (
-        <NavigationSlider
-            className="awesome-slider"
-            media={[
-                {
-                    slug: "page-one",
-                    className: "page-one",
-                    children: () => <p>Page One</p>
-                },
-                {
-                    slug: "page-two",
-                    className: "page-two",
-                    children: () => <p>Page Two</p>
-                }
-            ]}
-        />
-    )
-}
+    10%,30%,50%,70%,90% {
+        opacity: 1;
+    }
+`
 
-// Page header navigation
-const Header = () => {
-    return (
-        <Header>
-            <nav>
-                <Link href="page-one">Page One</Link>
-                <Link href="page-two">Page Two</Link>
-            </nav>
-        </Header>
-    )
-}
 
-// Wrapp the aplication with the navigation Provider passing down the current page slug.
-const App = () => {
-    const slug = "[THE INITIAL RENDERED SLUG]";
+const CityContainer = styled.div`
+    width: 100vw;
+    min-height: 110vh;
+`
 
-    return (
-        <Provider slug={slug}>
-            <Header />
-            <NavigationSlider />
-        </Provider>
-    )
-}
+const SliderContainer = styled.div`
+    height: 100%;
+`
 
-export default App;
+const Slider = ({ selected }) => (
+    <CityContainer>
+        {/* <FirstPageContainer>
+            <City />
+            {stars.map((star, index) => <Stars star={star} delay={(index) * -1} />)}
+        </FirstPageContainer> */}
+        <Night />
+        <AwesomeSlider bullets={false} fillParent={true} selected={selected}>
+            <SliderContainer><Header /></SliderContainer>
+            <SliderContainer><Services /></SliderContainer>
+            <SliderContainer><Skills /></SliderContainer>
+            <SliderContainer><Contact /></SliderContainer>
+        </AwesomeSlider>
+
+    </CityContainer>
+);
+
+export default Slider;
