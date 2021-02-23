@@ -8,6 +8,7 @@ import Services from '../components/services';
 import Skills from '../components/skills';
 import Contact from '../components/contact';
 import Header from '../components/header';
+import Projects from '../components/projects';
 
 const move = keyframes`
     from {
@@ -36,23 +37,28 @@ const CityContainer = styled.div`
 
 const SliderContainer = styled.div`
     height: 100%;
+    width: 100%;
 `
 
-const Slider = ({ selected }) => (
-    <CityContainer>
+const Slider = ({ selected, setSelected }) => {
+    function onTransitionRequest(e) {
+        setTimeout(() => setSelected(e.nextIndex), 500)
+    }
+    return (<CityContainer>
         {/* <FirstPageContainer>
             <City />
             {stars.map((star, index) => <Stars star={star} delay={(index) * -1} />)}
         </FirstPageContainer> */}
         <Night />
-        <AwesomeSlider bullets={false} fillParent={true} selected={selected}>
+        <AwesomeSlider bullets={false} fillParent={true} selected={selected} onTransitionRequest={onTransitionRequest}>
             <SliderContainer><Header /></SliderContainer>
             <SliderContainer><Services /></SliderContainer>
             <SliderContainer><Skills /></SliderContainer>
             <SliderContainer><Contact /></SliderContainer>
+            <SliderContainer><Projects /></SliderContainer>
         </AwesomeSlider>
 
     </CityContainer>
-);
-
+    );
+}
 export default Slider;

@@ -1,10 +1,19 @@
 import styled from "styled-components";
+import { media } from "../constants/breakpoint";
 
 
 const SocialIconContainer = styled.div`
     display: flex;
     height: 10rem;
     align-items: center;
+    ${media.mobileOnly} {
+        flex-direction: column;
+        position: absolute;
+        top: 35%;
+        height: 12rem;
+        right: 1rem;
+        justify-content: space-around;
+    }
 `
 
 const Image = styled.div`
@@ -19,9 +28,10 @@ const Image = styled.div`
     box-shadow: 0 0 10px #2187e7b3;
     align-items: center;
     justify-content: center;
+    transition: 1s;
 
     &:hover {
-        transform: translateY(-2rem);
+        transform: scale(1.5);
         color: white;
     }
 
@@ -36,19 +46,27 @@ const Image = styled.div`
     &:nth-child(3):hover {
         background-color: #0077B5;
     }
+
+    ${media.mobileOnly} {
+        &:hover {
+        transform: none;
+        color: white;
+    }
+    }
 `
 
 function SocialIcons() {
     return <SocialIconContainer>
-        <Image>
+        <Image onClick={() => window.open('https://www.facebook.com/trivenikgowda')}>
             <i className="fa fa-facebook"></i>
         </Image>
-        <Image>
+        <Image onClick={() => window.open('https://www.instagram.com/triveni_k_gowda/')}>
             <i className="fa fa-instagram"></i>
         </Image>
-        <Image>
+        <Image onClick={() => window.open('http://www.linkedin.com/in/triveni-k-772176140')}>
             <i className="fa fa-linkedin"></i>
         </Image>
+
     </SocialIconContainer>
 }
 

@@ -8,15 +8,15 @@ const Button = styled.button`
     letteer-spacing: 2px;
     width: 10rem;
     outline: none;
-    box-shadow: 0 0 10px #2187e7b3;
+    z-index: 11;
     &:hover {
         color: black;
         background: rgba(0,0,0,0.5);
         color: white
     }
 `
-function ButtonComponent({ text, bg, color }) {
-    return <Button color={color} bg={bg}>{text}</Button>
+function ButtonComponent({ text, bg, color, onClick }) {
+    return <Button color={color} bg={bg} onClick={onClick}>{text}</Button>
 }
 
 export default ButtonComponent;

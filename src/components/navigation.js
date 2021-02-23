@@ -68,6 +68,9 @@ const NavItems = ({ onClick, active, nav, showNav }) => {
         <NavigationItem onClick={() => onSelectNav(3)} active={active === 3} isNav={nav}>
             Contact
         </NavigationItem>
+        <NavigationItem onClick={() => onSelectNav(4)} active={active === 4} isNav={nav}>
+            Projects
+        </NavigationItem>
     </Fragment >
 }
 

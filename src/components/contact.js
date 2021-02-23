@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { media } from "../constants/breakpoint";
 import Button from "./button";
 import SocialIcons from "./socialIcons";
+import axios from "axios";
+import { validate } from 'email-validator';
 
 const ContactContainer = styled.section`
     width: 80vw;
@@ -51,16 +53,81 @@ const Input = styled.input`
     &:focus {
         -webkit-appearance: none;
         border-bottom: 2px solid white;
+    }
 
+    ${media.mobileOnly} {
+        width: 70%
     }
 `
-function Contact(props) {
+
+const TextArea = styled.textarea`
+  width: 40%;
+    border: none;
+    background: inherit;
+    -webkit-appearance: none;
+    color: white;
+    transition: 0.5s;
+    outline: none;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(0,0,0, 0.5);
+    padding: 0.5rem 1rem;
+    &:focus {
+        -webkit-appearance: none;
+        border-bottom: 2px solid white;
+    }
+
+    ${media.mobileOnly} {
+        width: 70%
+    }
+`;
+function Contact() {
+    const [email, setEmail] = useState('');
+    const [details, setDetails] = useState('');
+    const [error, set_error_message] = useState('');
+    const [popup, set_popup] = useState('');
+
+    function isValid() {
+        return validate(email) && details.length;
+    }
+    function sendMessage(e) {
+        e.preventDefault();
+        try {
+            if (isValid()) {
+                const data = {
+                    email: `${email}`,
+                    subject: "new client",
+                    content: details
+                };
+                axios.post("http://localhost:5000/mailer/sendEmail", data, {
+                    headers: {
+                        contentType: "application/json"
+                    }
+                })
+                    .then(response => {
+                        console.log(response);
+                        set_error_message("");
+                        set_popup(true);
+                    }).catch(ex => {
+                        set_popup(true);
+                        set_error_message("Something Went wrong")
+                        console.error("error in sending mail", ex)
+                    });
+            } else {
+                set_error_message("invalid input")
+            }
+        } catch (ex) {
+            console.error(`error in sending mail`, ex);
+            throw ex;
+        }
+    }
+
     return <ContactContainer id="contact">
         <Header>Contact Me</Header>
         <P>If you want to talk to me about project collaboration or just say Hi. Drop your email Id below or send an email to <span>ktriveni391@gmail.com</span></P>
         <Form>
-            <Input placeholder="Email" />
-            <Button text="submit" />
+            <Input placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            <TextArea placeholder="Description" onChange={e => setDetails(e.target.value)} />
+            <Button text="submit" onClick={sendMessage} />
         </Form>
         <SocialIcons />
     </ContactContainer>

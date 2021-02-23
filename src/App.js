@@ -119,32 +119,6 @@ const NavigationContainer = styled.ul`
 function App() {
   const [activePage, setActivePage] = useState(0);
   const [nav, showNav] = useState(false);
-
-  // return (
-  //   showNav ? <>
-  //     <Toggle onClick={toggleNav} background="black" />
-  //     <MobileNavContainer>
-  //       <NavItems onClick={toggleNav} />
-  //     </MobileNavContainer>
-  //   </> :
-  //     <Fragment>
-  //       <Wave />
-  //       <Wrapper>
-  //         <Toggle onClick={toggleNav} background="white" />
-  //         <NavigationWrapper >
-  //           <NavigationContainer>
-  //             <NavItems />
-  //           </NavigationContainer>
-  //         </NavigationWrapper>
-  //         <Header />
-  //         <Services />
-  //         <Skills />
-  //         <Contact />
-  //       </Wrapper>
-  //     </Fragment>
-  // );
-
-
   return <Fragment>
     {/* <MobileNavContainer>
       <NavItems onClick={(index => setActivePage(index))} />
@@ -155,7 +129,7 @@ function App() {
         <NavItems onClick={(index => setActivePage(index))} active={activePage} nav={nav} showNav={() => showNav(!nav)} />
       </NavigationContainer>
     </NavigationWrapper>
-    <Slider selected={activePage} />
+    <Slider selected={activePage} setSelected={(index) => setActivePage(index)} />
   </Fragment>
 
 }
