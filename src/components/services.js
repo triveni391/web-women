@@ -12,6 +12,7 @@ const ServiceContainer = styled.section`
     width: 90%;
     margin: auto;
     position: relative;
+    padding-top: 1rem;
 `
 
 const ServiceHeader = styled.h1`
@@ -58,24 +59,12 @@ const CardContent = styled.div`
     display: flex;
     justify-content: space-around;
     padding: 2rem 0;
+    margin: auto;
     ${media.mobileOnly} {
         flex-direction: column;
-        position: fixed;
-        top: 80px;
-        left: 0;
+        
     }
-    ${media.largeMobile} {
-        position: fixed;
-        top: 80px;
-    }
-    ${media.iphonePlus} {
-        position: fixed;
-        top: 70px;
-    }
-    ${media.iphoneX} {
-        position: fixed;
-        top: 15%;
-    }
+    
 `
 
 const HeaderDescription = styled.p`

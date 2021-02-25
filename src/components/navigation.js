@@ -9,13 +9,13 @@ const NavigationItem = styled.li`
       font-weight: 600;
       color: white;
       cursor: pointer;
-      color: ${props => props.active ? "white" : "rgba(255,255,255,0.5)"};
-      box-shadow: ${props => props.active ? "0 0 10px #2187e7b3" : ""};
+      color: ${props => props.active && props.isNav ? "white" : "rgba(255,255,255,0.5)"};
+      box-shadow: ${props => props.active && props.isNav ? "0 0 10px #2187e7b3" : ""};
       text-decoration: none;
       padding: 8px;
       
       &:hover {   
-          border: 2px solid white;
+          border: ${props => props.isNav ? '2px solid white' : 'none'};
           border-radius: 12px;
           padding: 6px;
        }

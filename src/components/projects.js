@@ -22,8 +22,8 @@ const Image = styled.img`
       }
 `
 const Container = styled.div`
-      width: 100%;
-      height: 50rem;
+      width: 85%;
+      margin: auto;
 `
 
 const ListItem = styled.li`
@@ -38,9 +38,8 @@ const ListContainer = styled.ul`
 
 const Content = styled.div`
       display: grid;
-      grid-template-columns: 40% 60%;
+      grid-template-columns: 36% 59%;
       grid-gap: 3rem;
-      padding: 2rem 8rem;
       color: rgba(255,255,255,0.5);
       z-index: 11;
       ${media.mobileOnly} {
@@ -52,14 +51,13 @@ const Content = styled.div`
 
 const ProjectHeader = styled(HeaderStyle)`
       font-size: 3em;
-      padding:0 8rem;
-      margin: 0;
       ${media.mobileOnly} {
           padding: 0;
       }
 `
 
 const TechnologyContainer = styled.div`
+    width: 100%;
       p {
           padding: 1rem 0;
       }

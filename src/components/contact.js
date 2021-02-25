@@ -9,9 +9,11 @@ import { validate } from 'email-validator';
 const ContactContainer = styled.section`
     width: 80vw;
     height: 80vh;
-    margin: 2rem 4rem;
+    margin: auto;
+    padding-top: 4rem;
     ${media.mobileOnly} {
         margin: 1rem 0rem;
+        padding-top: 1rem;
     }
 `
 

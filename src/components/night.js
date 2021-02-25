@@ -9,17 +9,17 @@ import star4 from '../assets/img/star4.png';
 import { media } from '../constants/breakpoint'
 
 const Building = styled.div`
-      position: absolute;
+      position: fixed;
       background-repeat-y: no-repeat;
       left: 0;
-      bottom: 60px;
+      bottom: 0px;
       background-image: url(${cityImg});
       z-index: 10;
       width: 100%;
-      height: 20rem;
-    ${media.mobileOnly} {
-        bottom: 20px;
-    }
+      height: 294px;
+      ${media.mobileOnly} {
+           height: 264px;
+      }
 `
 
 const move = keyframes`
@@ -60,7 +60,9 @@ const Container = styled.div`
     height: 100%;
     z-index: 10;
     pointer-events: none;
+    ${media.mobileOnly} {
 
+    }
 `
 
 const stars = [

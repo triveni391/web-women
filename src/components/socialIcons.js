@@ -9,7 +9,7 @@ const SocialIconContainer = styled.div`
     ${media.mobileOnly} {
         flex-direction: column;
         position: absolute;
-        top: 35%;
+        top: 40%;
         height: 12rem;
         right: 1rem;
         justify-content: space-around;

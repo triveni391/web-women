@@ -4,8 +4,7 @@ import { media } from "../constants/breakpoint";
 
 
 const HeaderSection = styled.section`
-    height: 60vh;
-    margin: 6rem 0;
+    margin: auto 0;
 `
 const HeaderContainer = styled.header`
     display: flex;

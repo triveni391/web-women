@@ -16,7 +16,8 @@ const SkillsContainer = styled.section`
     margin: auto;
     ${media.mobileOnly} {
     transform: translateY(-13%);
-    height: 25rem;
+    padding-top: 4rem;
+    height: 30rem;
     }
 `
 
@@ -89,86 +90,12 @@ const SkillsBar = styled.div`
     }
 `
 
-const oddCircularMotion = keyframes`
-     0% {
-         transform: translate(5rem, 10rem)
-     }
-
-     50% {
-        transform: translate(10rem, -5rem)
-
-     }
-     100% {
-        transform: translate(5rem, -10rem)
-     }
-
-`
-
-const evenCircularMotion = keyframes`
-     0% {
-         transform: translate(5rem, -10rem)
-     }
-
-     50% {
-        transform: translate(-10rem, -5rem)
-
-     }
-     100% {
-        transform: translate(5rem, 10rem)
-     }
-`
-
-const SkillsDefinition = styled.div`
-    width: 50%;
-    text-align: center;
-    height: 100vh;
-    ${media.mobileOnly} {
-        display: none;
-    }
-`
 const Content = styled.div`
     display: none;
         font-size: 1em;
         color: black;
         text-align: center;
         vertical-align: middle;
-`
-
-const CircleComponent = styled.div`
-    width: 10rem;
-    margin: 0 2rem;
-    height: 10rem;
-    border-radius: 10rem;
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 2s;
-    &:hover {
-        width: 30rem;
-        background: white;
-    }
-
-    &:hover ${Content} {
-        display: inline-block;
-    }
-
-    &:nth-child(odd) {
-        transform: translate(5rem, -20rem);
-
-    }
-
-    &:nth-child(even) {
-         transform: translate(5rem, 0rem);
-
-    }
-`
-const Header = styled.h5`
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    transition: 2s;
 `
 
 
