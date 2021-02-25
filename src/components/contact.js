@@ -100,7 +100,7 @@ function Contact() {
                     subject: "new client",
                     content: details
                 };
-                axios.post("http://localhost:5000/mailer/sendEmail", data, {
+                axios.post("https://my-protofolio-server.herokuapp.com/mailer/sendEmail", data, {
                     headers: {
                         contentType: "application/json"
                     }
