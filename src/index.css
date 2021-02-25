@@ -6,12 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   /* overflow-y: auto;
   box-sizing: border-box;
   position: fixed; */
   background:#2a2a2a;
-  height: auto;
 }
 
 * {

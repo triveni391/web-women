@@ -65,13 +65,14 @@ const TechnologyContainer = styled.div`
 
 const ImageContainer = styled.div`
       position: relative;
+      cursor: pointer;
 `
 
 function Projects() {
     return <Container>
         <ProjectHeader>Basil</ProjectHeader>
         <Content>
-            <ImageContainer>
+            <ImageContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
                 <Featured />
                 <Image src={basil} />
             </ImageContainer>
