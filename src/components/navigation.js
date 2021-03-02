@@ -9,8 +9,8 @@ const NavigationItem = styled.li`
       font-weight: 600;
       color: white;
       cursor: pointer;
-      color: ${props => props.active && props.isNav ? "white" : "rgba(255,255,255,0.5)"};
-      box-shadow: ${props => props.active && props.isNav ? "0 0 10px #2187e7b3" : ""};
+      color: ${props => props.active ? "white" : "rgba(255,255,255,0.5)"};
+      box-shadow: ${props => props.active ? "0 0 10px #2187e7b3" : ""};
       text-decoration: none;
       padding: 8px;
       
@@ -23,7 +23,12 @@ const NavigationItem = styled.li`
         color: black;
         width: 70%;
         text-align: center;
+        display: ${props => props.isNav ? "list-item" : "none"};
         margin: 2rem;
+         &:hover {
+          border-radius: 12px;
+          padding: 6px;
+       }
       }
       `;
 

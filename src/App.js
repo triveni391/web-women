@@ -99,10 +99,11 @@ const NavigationContainer = styled.ul`
       height: 4rem;
       padding: 1rem 0;
       justify-content: space-around;
+      transition: 0.5s;
       ${media.mobileOnly} {
         background: ${props => props.isNav ? "white" : "inherit"};
         width: ${props => props.isNav ? "100vw" : "100%"};
-        height: ${props => props.isNav ? "100vh" : "4rem"};
+        height: ${props => props.isNav ? "100vh" : "1rem"};
         z-index: 100;
         position: fixed;
         top: 0;
@@ -122,6 +123,7 @@ const Toggle = styled.div`
       top: 2rem;
       height: 2rem;
       width: 3rem;
+      transistion: 0s;
       ${media.mobileOnly} {
         display: block;
         color: black;
@@ -135,9 +137,6 @@ function App() {
   const [activePage, setActivePage] = useState(0);
   const [nav, showNav] = useState(false);
   return <Fragment>
-    {/* <MobileNavContainer>
-      <NavItems onClick={(index => setActivePage(index))} />
-    </MobileNavContainer> */}
     <NavigationWrapper>
       <Toggle onClick={() => showNav(!nav)} isNav={nav}></Toggle>
       <NavigationContainer isNav={nav}>

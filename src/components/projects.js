@@ -17,9 +17,7 @@ const HeaderStyle = styled.h1`
 const Image = styled.img`
       width: 100%;
       height: 100%;
-      ${media.mobileOnly} {
-          padding: 1rem;
-      }
+      max-width: 510px;
 `
 const Container = styled.div`
       width: 85%;
@@ -128,7 +126,8 @@ const HoverContainer = styled.div`
     display: none;
     padding: 2rem;
     width: 100%;
-    height: 300px;
+    height: 400px;
+    max-width: 510px;
     position: absolute;
     cursor: pointer;
     justify-content: center;
@@ -142,7 +141,7 @@ const HoverContainer = styled.div`
 
 const ImageContainer = styled.div`
       width: 100%;
-      height: 300px;
+      height: 100%;
       position: relative;
       cursor: pointer;
       &:hover ${HoverContainer} {
