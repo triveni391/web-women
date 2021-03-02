@@ -4,13 +4,14 @@ import { media } from "../constants/breakpoint";
 
 const SocialIconContainer = styled.div`
     display: flex;
-    height: 10rem;
+    height: fit-content;
+    padding: 2rem 0;
     align-items: center;
     ${media.mobileOnly} {
         flex-direction: column;
         position: absolute;
         top: 40%;
-        height: 12rem;
+        height: 40%;
         right: 1rem;
         justify-content: space-around;
     }

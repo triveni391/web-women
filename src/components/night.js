@@ -16,7 +16,7 @@ const Building = styled.div`
       background-image: url(${cityImg});
       z-index: 10;
       width: 100%;
-      height: 294px;
+      height: 260px;
       ${media.mobileOnly} {
            height: 264px;
       }

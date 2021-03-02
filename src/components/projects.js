@@ -16,9 +16,9 @@ const HeaderStyle = styled.h1`
 
 const Image = styled.img`
       width: 100%;
-      height: 30rem;
+      height: 100%;
       ${media.mobileOnly} {
-          height: 50vh;
+          padding: 1rem;
       }
 `
 const Container = styled.div`
@@ -57,50 +57,115 @@ const ProjectHeader = styled(HeaderStyle)`
 `
 
 const TechnologyContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap:2rem;
     width: 100%;
-      p {
-          padding: 1rem 0;
+    div {
+          background: black;
+          border: 2px solid;
+          padding: 0.5rem 1rem;
+          width: fit-content;
       }
+
+    ${media.mobileOnly}  {
+        grid-template-columns: repeat(2, auto);
+         grid-gap:1rem;
+    }
 `;
 
-const ImageContainer = styled.div`
-      position: relative;
-      cursor: pointer;
+
+
+// function Projects() {
+//     return <Container>
+//         <ProjectHeader>Basil</ProjectHeader>
+//         <Content>
+//             <ImageContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
+//                 <Featured />
+//                 <Image src={basil} />
+//             </ImageContainer>
+//             <TechnologyContainer>
+//                 <HeaderStyle>Description</HeaderStyle>
+//                 <p>Basil is a resturant website which renders the list of resturants and menu list of the selected resturant.</p>
+//                 <p>Two api's, which renders the list of restuarants and a selected resturant is used throughout the application. react-redux is used to store the api results, styled-css for inline styling.
+//                     Well wriiten swagger documentation is available for the api's used. </p>
+//                 <HeaderStyle>Technologies</HeaderStyle>
+//                 <ListContainer>
+//                     <ListItem><ButtonComponent text="javascript" /></ListItem>
+//                     <ListItem><ButtonComponent text="HTML5/CSS" /></ListItem>
+//                     <ListItem><ButtonComponent text="ReactJs" /></ListItem>
+//                     <ListItem><ButtonComponent text="NodeJs" /></ListItem>
+//                     <ListItem><ButtonComponent text="ExpressJS" /></ListItem>
+//                 </ListContainer>
+//                 <HeaderStyle>Libraries</HeaderStyle>
+//                 <ListContainer>
+//                     <ListItem><ButtonComponent text="Swagger" /></ListItem>
+//                     <ListItem><ButtonComponent text="Styled-components" /></ListItem>
+//                     <ListItem><ButtonComponent text="React-redux" /></ListItem>
+//                     <ListItem><ButtonComponent text="React-router" /></ListItem>
+//                     <ListItem><ButtonComponent text="nodemon" /></ListItem>
+//                 </ListContainer>
+//             </TechnologyContainer>
+
+//         </Content>
+//     </Container>
+// }
+
+const NewContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap: 2rem;
+    width: 75vw;
+    overflow-y: scroll;
+    height: 50vh;
+    margin: 0 auto;
+    ${media.mobileOnly} {
+        grid-template-columns: 100%;
+    }
 `
 
-function Projects() {
-    return <Container>
-        <ProjectHeader>Basil</ProjectHeader>
-        <Content>
-            <ImageContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
-                <Featured />
-                <Image src={basil} />
-            </ImageContainer>
-            <TechnologyContainer>
-                <HeaderStyle>Description</HeaderStyle>
-                <p>Basil is a resturant website which renders the list of resturants and menu list of the selected resturant.</p>
-                <p>Two api's, which renders the list of restuarants and a selected resturant is used throughout the application. react-redux is used to store the api results, styled-css for inline styling.
-                    Well wriiten swagger documentation is available for the api's used. </p>
-                <HeaderStyle>Technologies</HeaderStyle>
-                <ListContainer>
-                    <ListItem><ButtonComponent text="javascript" /></ListItem>
-                    <ListItem><ButtonComponent text="HTML5/CSS" /></ListItem>
-                    <ListItem><ButtonComponent text="ReactJs" /></ListItem>
-                    <ListItem><ButtonComponent text="NodeJs" /></ListItem>
-                    <ListItem><ButtonComponent text="ExpressJS" /></ListItem>
-                </ListContainer>
-                <HeaderStyle>Libraries</HeaderStyle>
-                <ListContainer>
-                    <ListItem><ButtonComponent text="Swagger" /></ListItem>
-                    <ListItem><ButtonComponent text="Styled-components" /></ListItem>
-                    <ListItem><ButtonComponent text="React-redux" /></ListItem>
-                    <ListItem><ButtonComponent text="React-router" /></ListItem>
-                    <ListItem><ButtonComponent text="nodemon" /></ListItem>
-                </ListContainer>
-            </TechnologyContainer>
+const HoverContainer = styled.div`
+    display: none;
+    padding: 2rem;
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    cursor: pointer;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+        z-index: 2;
+      color: white;
+      font-size: 1em;
+      font-weight: 700;
+`
 
-        </Content>
-    </Container>
+const ImageContainer = styled.div`
+      width: 100%;
+      height: 300px;
+      position: relative;
+      cursor: pointer;
+      &:hover ${HoverContainer} {
+        display:flex;
+      }
+`
+
+function Projects(props) {
+    return <NewContainer>
+        {[1].map(item => <ImageContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
+            <HoverContainer>
+                <TechnologyContainer>
+                    <div>JS</div>
+                    <div>ReactJS</div>
+                    <div>NodeJS</div>
+                    <div>HTML</div>
+                    <div>CSS</div>
+                    <div>Swagger</div>
+                </TechnologyContainer>
+            </HoverContainer>
+            <Featured />
+            <Image src={basil} />
+        </ImageContainer>)}
+    </NewContainer>
 }
-
 export default Projects;

@@ -106,6 +106,7 @@ const NavigationContainer = styled.ul`
         z-index: 100;
         position: fixed;
         top: 0;
+        padding: 3rem 0;
         margin: 0;
         font-size: 2em;
         flex-direction: column;
@@ -115,6 +116,20 @@ const NavigationContainer = styled.ul`
   `
 
 
+const Toggle = styled.div`
+      position: fixed;
+      right: 2rem;
+      top: 2rem;
+      height: 2rem;
+      width: 3rem;
+      ${media.mobileOnly} {
+        display: block;
+        color: black;
+        background: inherit;
+        border-bottom: 2px solid ${props => props.isNav ? "black" : "white"};
+        border-top: 2px solid ${props => props.isNav ? "black" : "white"};
+      }
+`
 
 function App() {
   const [activePage, setActivePage] = useState(0);
@@ -124,7 +139,7 @@ function App() {
       <NavItems onClick={(index => setActivePage(index))} />
     </MobileNavContainer> */}
     <NavigationWrapper>
-
+      <Toggle onClick={() => showNav(!nav)} isNav={nav}></Toggle>
       <NavigationContainer isNav={nav}>
         <NavItems onClick={(index => setActivePage(index))} active={activePage} nav={nav} showNav={() => showNav(!nav)} />
       </NavigationContainer>

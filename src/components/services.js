@@ -25,7 +25,8 @@ const CardContainer = styled.div`
     position: relative;
     display: flex;
     width: 70%;
-    height: 20rem;
+    height: 15rem;
+    min-height: fit-content;
     display: flex;
     z-index: 10;
     flex-direction: column;

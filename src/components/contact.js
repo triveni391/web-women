@@ -10,7 +10,7 @@ const ContactContainer = styled.section`
     width: 80vw;
     height: 80vh;
     margin: auto;
-    padding-top: 4rem;
+    padding-top: 2rem;
     ${media.mobileOnly} {
         margin: 1rem 0rem;
         padding-top: 1rem;
@@ -26,7 +26,7 @@ const Header = styled.h2`
 
 const P = styled.p`
     color: rgba(255,255,255,0.5);
-    line-height: 2;
+    line-height: 1.5;
     width: 40%;
     span {
         color: white;
@@ -49,7 +49,7 @@ const Input = styled.input`
     color: white;
     transition: 0.5s;
     outline: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-bottom: 2px solid rgba(0,0,0, 0.5);
     padding: 0.5rem 1rem;
     &:focus {
@@ -70,7 +70,7 @@ const TextArea = styled.textarea`
     color: white;
     transition: 0.5s;
     outline: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-bottom: 2px solid rgba(0,0,0, 0.5);
     padding: 0.5rem 1rem;
     &:focus {
@@ -82,11 +82,16 @@ const TextArea = styled.textarea`
         width: 70%
     }
 `;
+
+const ErrorText = styled.p`
+    color: red;
+`
 function Contact() {
     const [email, setEmail] = useState('');
     const [details, setDetails] = useState('');
     const [error, set_error_message] = useState('');
     const [popup, set_popup] = useState('');
+    const [info, set_info] = useState('');
 
     function isValid() {
         return validate(email) && details.length;
@@ -109,6 +114,7 @@ function Contact() {
                         console.log(response);
                         set_error_message("");
                         set_popup(true);
+                        set_info('Our team will contact you. Please be ')
                     }).catch(ex => {
                         set_popup(true);
                         set_error_message("Something Went wrong")
@@ -124,14 +130,21 @@ function Contact() {
     }
 
     return <ContactContainer id="contact">
-        <Header>Contact Me</Header>
+        {/* <Header>Contact Me</Header> */}
         <P>If you want to talk to me about project collaboration or just say Hi. Drop your email Id below or send an email to <span>ktriveni391@gmail.com</span></P>
+        {
+            error && <ErrorText>{error}</ErrorText>
+        }
+        {
+            !error && info && <P>Your message is successfully sent. Our team will get in touch with you.</P>
+        }
         <Form>
             <Input placeholder="Email" onChange={e => setEmail(e.target.value)} />
             <TextArea placeholder="Description" onChange={e => setDetails(e.target.value)} />
             <Button text="submit" onClick={sendMessage} />
         </Form>
         <SocialIcons />
+
     </ContactContainer>
 }
 

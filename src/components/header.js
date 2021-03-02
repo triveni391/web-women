@@ -25,7 +25,8 @@ const MyDescription = styled.div`
 
 const HeaderStyle = styled.h1`
      color: white;
-     font-size: 5rem;
+     font-size: 3rem;
+     margin-top: 0;
      text-transform: uppercase;
      text-shadow: 0 3px 3px rgba(0,0,0,.5);
      ${media.mobileOnly} {
