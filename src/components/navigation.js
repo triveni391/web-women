@@ -16,7 +16,6 @@ const NavigationItem = styled.li`
       
       &:hover {   
           border: ${props => props.isNav ? '2px solid white' : 'none'};
-          border-radius: 12px;
           padding: 6px;
        }
       ${media.mobileOnly} {

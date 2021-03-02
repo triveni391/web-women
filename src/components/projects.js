@@ -17,7 +17,7 @@ const HeaderStyle = styled.h1`
 const Image = styled.img`
       width: 100%;
       height: 100%;
-      max-width: 510px;
+      max-width: 520px;
 `
 const Container = styled.div`
       width: 85%;
@@ -126,8 +126,8 @@ const HoverContainer = styled.div`
     display: none;
     padding: 2rem;
     width: 100%;
-    height: 400px;
-    max-width: 510px;
+    height: 100%;
+    max-width: 520px;
     position: absolute;
     cursor: pointer;
     justify-content: center;
@@ -151,8 +151,8 @@ const ImageContainer = styled.div`
 
 function Projects(props) {
     return <NewContainer>
-        {[1].map(item => <ImageContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
-            <HoverContainer>
+        {[1].map(item => <ImageContainer>
+            <HoverContainer onClick={() => window.open('https://basil-ui.herokuapp.com/')}>
                 <TechnologyContainer>
                     <div>JS</div>
                     <div>ReactJS</div>
