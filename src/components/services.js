@@ -88,7 +88,7 @@ const Card = (props) => {
         <Logo src={props.logo} />
         <div>
             <ServiceHeader>{props.header}</ServiceHeader>
-            <HeaderDescription>Develop an Excellent User Interface and Integrate the features with backend.</HeaderDescription>
+            <HeaderDescription>{props.description}</HeaderDescription>
         </div>
     </CardContainer>
 }
@@ -98,8 +98,8 @@ const Services = () => {
         Quality test cases using JEST, Mocha and chai ensured for good maintainence
        </HeaderDescription> */}
         <CardContent>
-            <Card logo={ReactLogo} header="UI Development" />
-            <Card logo={Web} header="Web Development" />
+            <Card logo={ReactLogo} header="UI Development" description='Develop an Excellent User Interface and Integrate the features with backend.' />
+            <Card logo={Web} header="Web Development" description='I provide web solutions to buisness using Nodejs, ReactJs, MongoDb and HTML/CSS.' />
         </CardContent>
     </ServiceContainer>
 }

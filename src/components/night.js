@@ -19,6 +19,7 @@ const Building = styled.div`
       height: 260px;
       ${media.mobileOnly} {
            height: 264px;
+           display: none;
       }
 `
 
